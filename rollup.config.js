@@ -41,8 +41,8 @@ const basePath = process.env.BASE_PATH || '';
 function resolveFileUrl({ fileName }) {
   // Add the subdirectory prefix for GitHub Pages
   const url = fileNameToURL(fileName);
-  if (url.startsWith('/')) {
-    return JSON.stringify('/codemo-image-optimize' + url);
+  if (url.startsWith('/') && basePath) {
+    return JSON.stringify(basePath + url);
   }
   return JSON.stringify(url);
 }
@@ -131,6 +131,7 @@ export default async function ({ watch }) {
             importMetaAssets(),
             serviceWorkerPlugin({
               output: 'static/serviceworker.js',
+              basePath: basePath
             }),
             ...commonPlugins(),
             commonjs(),
