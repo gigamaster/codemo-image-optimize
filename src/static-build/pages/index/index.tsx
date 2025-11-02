@@ -36,10 +36,10 @@ const Index: FunctionalComponent<Props> = () => (
       <meta name="twitter:card" content="summary" />
       <meta property="og:title" content="Codemo Image Optimize" />
       <meta property="og:type" content="website" />
-      <meta property="og:image" content={`${siteOrigin}${ogImage}`} />
+      <meta property="og:image" content={ogImage} />
       <meta
         property="og:image:secure_url"
-        content={`${siteOrigin}${ogImage}`}
+        content={ogImage}
       />
       <meta property="og:image:type" content="image/png" />
       <meta property="og:image:width" content="500" />
