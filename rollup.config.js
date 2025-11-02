@@ -36,7 +36,12 @@ import entryDataPlugin, { fileNameToURL } from './lib/entry-data-plugin';
 import dedent from 'dedent';
 
 function resolveFileUrl({ fileName }) {
-  return JSON.stringify(fileNameToURL(fileName));
+  // Add the subdirectory prefix for GitHub Pages
+  const url = fileNameToURL(fileName);
+  if (url.startsWith('/')) {
+    return JSON.stringify('/codemo-image-optimize' + url);
+  }
+  return JSON.stringify(url);
 }
 
 function resolveImportMetaUrlInStaticBuild(property, { moduleId }) {
