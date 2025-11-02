@@ -3,7 +3,7 @@
   "name": "codemo-image-optimize",
   "version": "2.0.0",
   "license": "apache-2.0",
-  "homepage": "https://github.com/gigamaster/codemo-image-optimize",
+  "homepage": "https://gigamaster.github.io/codemo-image-optimize",
   "scripts": {
     "build": "rollup -c && node lib/move-output.js",
     "debug": "node --inspect-brk node_modules/.bin/rollup -c",
