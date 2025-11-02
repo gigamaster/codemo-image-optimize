@@ -31,7 +31,7 @@ jobs:
         run: npm ci
 
       - name: Build
-        run: npm run build
+        run: BASE_PATH=/codemo-image-optimize npm run build
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
