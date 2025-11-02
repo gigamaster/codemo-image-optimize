@@ -31,10 +31,10 @@ const Index: FunctionalComponent<Props> = () => (
       <meta charSet="utf-8" />
       <meta
         name="description"
-        content="Smaller是一款卓越的图像优化工具，它让您能够在浏览器中压缩并对比采用不同编解码器的图像效果"
+        content="Image optimization tool that allows you to compress and compare images using different codecs within your browser."
       />
       <meta name="twitter:card" content="summary" />
-      <meta property="og:title" content="Smaller 图片压缩" />
+      <meta property="og:title" content="Codemo Image Optimize" />
       <meta property="og:type" content="website" />
       <meta property="og:image" content={`${siteOrigin}${ogImage}`} />
       <meta
@@ -47,7 +47,7 @@ const Index: FunctionalComponent<Props> = () => (
 
       <meta
         name="og:description"
-        content="Smaller是一款卓越的图像优化工具，它让您能够在浏览器中压缩并对比采用不同编解码器的图像效果。."
+        content="Image optimization tool that allows you to compress and compare images."
       />
       <meta
         name="viewport"
@@ -87,10 +87,10 @@ const Index: FunctionalComponent<Props> = () => (
               aria-hidden="false"
             >
               <div class={snackbarStyle.text}>
-                初始化错误：此站点需要JavaScript支持，但您的浏览器已禁用该功能。
+                Initialization error: This site requires JavaScript support, but your browser has it disabled.
               </div>
               <a class={snackbarStyle.button} href="/">
-                重新加载
+                Reload
               </a>
             </div>
           </snack-bar>
