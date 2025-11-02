@@ -47,6 +47,17 @@ function resolveFileUrl({ fileName }) {
   return JSON.stringify(url);
 }
 
+// Add a new function to resolve AMD module IDs
+function resolveAMDModuleId(id) {
+  // If this is a service-worker import, resolve it to the correct path
+  if (id === 'service-worker:sw') {
+    const swPath = basePath ? basePath + '/static/sw.js' : '/static/sw.js';
+    return JSON.stringify(swPath);
+  }
+  // For other modules, return null to let the default resolver handle it
+  return null;
+}
+
 function resolveImportMetaUrlInStaticBuild(property, { moduleId }) {
   if (property !== 'url') return;
   throw new Error(dedent`
@@ -162,10 +173,26 @@ export default async function ({ watch }) {
         processFile: (content, filePath) => {
           if (filePath.endsWith('sw-bridge.894ac.js')) {
             // Replace the hardcoded 'serviceworker.js' with the correct path
+            const swPath = basePath
+              ? basePath + '/static/sw.js'
+              : '/static/sw.js';
             return content.replace(
-              'serviceworker.js',
-              basePath ? basePath + '/static/sw.js' : '/static/sw.js',
+              /n\.p\s*\+\s*(['"])serviceworker\.js\1/g,
+              `n.p + $1${swPath}$1`,
             );
+          }
+          // Also process AMD module files that might contain service-worker:sw references
+          if (filePath.includes('sw-bridge') && filePath.endsWith('.js')) {
+            const swPath = basePath
+              ? basePath + '/static/sw.js'
+              : '/static/sw.js';
+            // Replace AMD module definition pattern
+            content = content.replace(
+              /"service-worker:sw"/g,
+              JSON.stringify(swPath),
+            );
+            // Also replace any other instances
+            content = content.replace(/service-worker:sw/g, swPath);
           }
           return content;
         },

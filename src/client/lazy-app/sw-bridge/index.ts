@@ -2,7 +2,11 @@ import type SnackBarElement from 'shared/custom-els/snack-bar';
 
 import { get, set } from 'idb-keyval';
 
-import swUrl from 'service-worker:sw';
+// Use simple path-based service worker registration instead of complex import
+// For GitHub Pages deployment, the service worker will be at /codemo-image-optimize/static/sw.js
+// For local development, it will be at /static/sw.js
+// We'll use a relative path that works in both cases
+const swUrl = './static/sw.js';
 
 /** Tell the service worker to skip waiting */
 async function skipWaiting() {
