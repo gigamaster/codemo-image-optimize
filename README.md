@@ -12,7 +12,7 @@
 
 [![HCodemo Screenshot](codemo-image-optimize.jpg)](https://gigamaster.github.io/codemo/)
 
-# [codemo-optimize]!
+# [codemo-optimize]
 
 [codemo-optimize] is an image compression web app that reduces image sizes through numerous formats.  
 
@@ -31,6 +31,9 @@ This version does not collect any visitor data, image size metrics, or installat
 To develop for Smaller:
 
 1. Clone the repository
+   ```sh
+   git clone https://github.com/gigamaster/codemo-image-optimize.git
+   ```
 2. To install node packages, run:
    ```sh
    npm install
