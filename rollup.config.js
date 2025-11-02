@@ -35,6 +35,9 @@ import dataURLPlugin from './lib/data-url-plugin';
 import entryDataPlugin, { fileNameToURL } from './lib/entry-data-plugin';
 import dedent from 'dedent';
 
+// Get the base path from environment variable, default to empty string for local development
+const basePath = process.env.BASE_PATH || '';
+
 function resolveFileUrl({ fileName }) {
   // Add the subdirectory prefix for GitHub Pages
   const url = fileNameToURL(fileName);
