@@ -1,5 +1,5 @@
 <p align="center">  
-  <a href="https://github.com/gigamaster/codemo">
+  <a href="https://gigamaster.github.io/codemo-image-optimize/">
   <img src="html-css-javascript.svg" width="auto" alt="Codemo Digital Nomad">
   <img src="http://ForTheBadge.com/images/badges/powered-by-electricity.svg"></a>
 </p>
@@ -10,7 +10,7 @@
 <br /><br />
 </h2>
 
-[![HCodemo Screenshot](codemo-image-optimize.jpg)](https://gigamaster.github.io/codemo/)
+[![HCodemo Screenshot](codemo-image-optimize.jpg)](https://gigamaster.github.io/codemo-image-optimize/)
 
 # [codemo-optimize]
 
@@ -52,4 +52,4 @@ To develop for Smaller:
 A collection of web apps for creatives and developers on the go. Features a live code playground, vector graphic editor, and a repository browser to preview, edit, and and download individual files or directories as ZIP archives. Built with localStorage for user-configurable settings and running entirely in the browser.
 
 
-[codemo-optimize]: https://gigamaster.github.io/codemo/
+[codemo-optimize]: https://gigamaster.github.io/codemo-image-optimize/
