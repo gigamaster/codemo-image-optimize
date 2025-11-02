@@ -129,10 +129,6 @@ export default async function ({ watch }) {
             { resolveFileUrl },
             OMT({ loader: await omtLoaderPromise }),
             importMetaAssets(),
-            serviceWorkerPlugin({
-              output: 'static/serviceworker.js',
-              basePath: basePath
-            }),
             ...commonPlugins(),
             commonjs(),
             resolve(),
@@ -153,8 +149,27 @@ export default async function ({ watch }) {
         },
         resolveFileUrl,
       ),
+      serviceWorkerPlugin({
+        output: 'static/sw.js',
+        basePath: basePath,
+      }),
       ...commonPlugins(),
-      emitFiles({ include: '**/*', root: path.join(__dirname, 'src', 'copy') }),
+      emitFiles({
+        include: '**/*',
+        root: path.join(__dirname, 'src', 'copy'),
+        basePath: basePath,
+        // Add a processor for the sw-bridge file to fix the service worker path
+        processFile: (content, filePath) => {
+          if (filePath.endsWith('sw-bridge.894ac.js')) {
+            // Replace the hardcoded 'serviceworker.js' with the correct path
+            return content.replace(
+              'serviceworker.js',
+              basePath ? basePath + '/static/sw.js' : '/static/sw.js',
+            );
+          }
+          return content;
+        },
+      }),
       nodeExternalPlugin(),
       featurePlugin(),
       replace({ __PRERENDER__: true, __PRODUCTION__: isProduction }),
