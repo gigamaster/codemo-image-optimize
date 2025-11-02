@@ -58,7 +58,7 @@ const Index: FunctionalComponent<Props> = () => (
       <link rel="shortcut icon" href={favicon} />
       <link rel="apple-touch-icon" href={ogImage} />
       <meta name="theme-color" content="#ff3385" />
-      <link rel="manifest" href="/manifest.json" />
+      <link rel="manifest" href="/codemo-image-optimize/manifest.json" />
       <link rel="canonical" href={siteOrigin} />
       {/* AdSense script removed for privacy */}
       <style
