@@ -1,0 +1,33 @@
+html {
+  --sun: #ebb747;
+  --hot-sun: #e6c015;
+  --white: #fff;
+  --black: #000;
+  --red: #e02f2f;
+  --off-black: #1d1d1d;
+  --blue: #5fb4e4;
+  --dim-blue: #0a7bcc;
+  --deep-blue: #09f;
+  --light-blue: #76c8ff;
+  --less-light-gray: #bcbcbc;
+  --medium-light-gray: #d1d1d1;
+  --light-gray: #eaeaea;
+  --darker: #1d1d1d;
+  --dark-gray: #333;
+  --dim-text: #343a3e;
+  --dark-text: #142630;
+
+  /* Old stuff: */
+  --button-fg: rgb(95, 180, 228);
+}
+
+@media (dynamic-range: high) {
+  @supports (color: oklch(0% 0 0)) {
+    html {
+      --sun: oklch(75% 0.3 3);
+      --hot-sun: oklch(65% 0.3 3);
+      --blue: oklch(75% 0.3 248);
+      --deep-blue: oklch(65% 0.3 248);
+    }
+  }
+}
