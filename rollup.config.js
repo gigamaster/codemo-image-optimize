@@ -51,6 +51,8 @@ function resolveImportMetaUrlInStaticBuild(property, { moduleId }) {
 }
 
 const dir = '.tmp/build';
+// Get base path from environment variable or default to empty string
+const basePath = process.env.BASE_PATH || '';
 const staticPath = 'static/c/[name]-[hash][extname]';
 const jsPath = staticPath.replace('[extname]', '.js');
 
