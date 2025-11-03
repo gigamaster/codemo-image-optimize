@@ -36,8 +36,8 @@ interface Output {
 const toOutput: Output = {
   'index.html': renderPage(<IndexPage />),
   'manifest.json': JSON.stringify({
-    name: 'Smaller',
-    short_name: 'Smaller',
+    name: 'Codemo Image-optimize',
+    short_name: 'Image-optimize',
     start_url: '/?utm_medium=PWA&utm_source=launcher',
     display: 'standalone',
     orientation: 'any',
@@ -57,7 +57,7 @@ const toOutput: Output = {
       },
     ],
     description:
-      'Compress and compare images directly using different codecs in your browser。',
+      'Compress and compare images with different codecs, right in your browser.',
     lang: 'en',
     categories: ['photo', 'productivity', 'utilities'],
     share_target: {
@@ -75,17 +75,17 @@ const toOutput: Output = {
     },
   }),
   _headers: dedent`
-    #/*
-    #  Cache-Control: no-cache
+    /*
+      Cache-Control: no-cache
 
     # I don't think Rollup is cache-busting files correctly.
     #/c/*
     #  Cache-Control: max-age=31536000
 
     # COOP+COEP for WebAssembly threads.
-    #/*
-    #  Cross-Origin-Embedder-Policy: require-corp
-    #  Cross-Origin-Opener-Policy: same-origin
+    /*
+      Cross-Origin-Embedder-Policy: require-corp
+      Cross-Origin-Opener-Policy: same-origin
   `,
 };
 

@@ -166,7 +166,7 @@ export class Options extends Component<Props, State> {
             value={determineLosslessQuality(options.quality, options.method)}
             onInput={this.onChange}
           >
-            Lossless:
+            Effort:
           </Range>
         </div>
         <div class={style.optionOneCell}>
@@ -177,11 +177,11 @@ export class Options extends Component<Props, State> {
             value={'' + (100 - options.near_lossless)}
             onInput={this.onChange}
           >
-            Mild Loss:
+            Slight loss:
           </Range>
         </div>
         <label class={style.optionToggle}>
-          Discrete Tone Image
+          Discrete tone image
           {/*
             Although there are 3 different kinds of image hint, webp only
             seems to do something with the 'graph' type, and I don't really
@@ -210,7 +210,7 @@ export class Options extends Component<Props, State> {
             value={options.method}
             onInput={this.onChange}
           >
-            Calculation Intensity:
+            Effort:
           </Range>
         </div>
         <div class={style.optionOneCell}>
@@ -230,13 +230,13 @@ export class Options extends Component<Props, State> {
             checked={showAdvanced}
             onChange={linkState(this, 'showAdvanced')}
           />
-          Advanced Settings
+          Advanced settings
         </label>
         <Expander>
           {showAdvanced ? (
             <div>
               <label class={style.optionToggle}>
-                Alpha Channel Compression
+                Compress alpha
                 <Checkbox
                   name="alpha_compression"
                   checked={!!options.alpha_compression}
@@ -251,7 +251,7 @@ export class Options extends Component<Props, State> {
                   value={options.alpha_quality}
                   onInput={this.onChange}
                 >
-                  Alpha Channel Quality:
+                  Alpha quality:
                 </Range>
               </div>
               <div class={style.optionOneCell}>
@@ -262,11 +262,11 @@ export class Options extends Component<Props, State> {
                   value={options.alpha_filtering}
                   onInput={this.onChange}
                 >
-                  Alpha Filter Quality:
+                  Alpha filter quality:
                 </Range>
               </div>
               <label class={style.optionToggle}>
-                Auto Filter Strength
+                Auto adjust filter strength
                 <Checkbox
                   name="autofilter"
                   checked={!!options.autofilter}
@@ -283,13 +283,13 @@ export class Options extends Component<Props, State> {
                       value={options.filter_strength}
                       onInput={this.onChange}
                     >
-                      Filter Strength:
+                      Filter strength:
                     </Range>
                   </div>
                 )}
               </Expander>
               <label class={style.optionToggle}>
-                Sharp Filter
+                Strong filter
                 <Checkbox
                   name="filter_type"
                   checked={!!options.filter_type}
@@ -304,11 +304,11 @@ export class Options extends Component<Props, State> {
                   value={7 - options.filter_sharpness}
                   onInput={this.onChange}
                 >
-                  Filter Sharpness:
+                  Filter sharpness:
                 </Range>
               </div>
               <label class={style.optionToggle}>
-                Sharp RGB-YUV Conversion
+                Sharp RGB→YUV conversion
                 <Checkbox
                   name="use_sharp_yuv"
                   checked={!!options.use_sharp_yuv}
@@ -323,7 +323,7 @@ export class Options extends Component<Props, State> {
                   value={options.pass}
                   onInput={this.onChange}
                 >
-                  Processing Iterations:
+                  Passes:
                 </Range>
               </div>
               <div class={style.optionOneCell}>
@@ -334,11 +334,11 @@ export class Options extends Component<Props, State> {
                   value={options.sns_strength}
                   onInput={this.onChange}
                 >
-                  Space Noise Shaping:
+                  Spatial noise shaping:
                 </Range>
               </div>
               <label class={style.optionTextFirst}>
-                Preprocessing:
+                Preprocess:
                 <Select
                   name="preprocessing"
                   value={options.preprocessing}
@@ -384,7 +384,7 @@ export class Options extends Component<Props, State> {
     return (
       <form class={style.optionsSection} onSubmit={preventDefault}>
         <label class={style.optionToggle}>
-          Lossless Compression
+          Lossless
           <Checkbox
             name="lossless"
             checked={!!options.lossless}
@@ -395,7 +395,7 @@ export class Options extends Component<Props, State> {
           ? this._losslessSpecificOptions(options)
           : this._lossySpecificOptions(options)}
         <label class={style.optionToggle}>
-          Keep Transparency Data
+          Preserve transparent data
           <Checkbox
             name="exact"
             checked={!!options.exact}

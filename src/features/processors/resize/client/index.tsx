@@ -232,7 +232,7 @@ export class Options extends Component<Props, State> {
         onSubmit={preventDefault}
       >
         <label class={style.optionTextFirst}>
-          algorithm:
+          Method:
           <Select
             name="resizeMethod"
             value={options.method}
@@ -286,7 +286,7 @@ export class Options extends Component<Props, State> {
         <Expander>
           {isWorkerOptions(options) ? (
             <label class={style.optionToggle}>
-              Pre-multiply Alpha channel
+              Premultiply alpha channel
               <Checkbox
                 name="premultiply"
                 checked={options.premultiply}
@@ -306,7 +306,7 @@ export class Options extends Component<Props, State> {
           ) : null}
         </Expander>
         <label class={style.optionToggle}>
-          Keep Aspect Ratio
+          Maintain aspect ratio
           <Checkbox
             name="maintainAspect"
             checked={maintainAspect}
@@ -316,7 +316,7 @@ export class Options extends Component<Props, State> {
         <Expander>
           {maintainAspect ? null : (
             <label class={style.optionTextFirst}>
-              Fit Method:
+              Fit method:
               <Select
                 name="fitMethod"
                 value={options.fitMethod}

@@ -35,27 +35,8 @@ import dataURLPlugin from './lib/data-url-plugin';
 import entryDataPlugin, { fileNameToURL } from './lib/entry-data-plugin';
 import dedent from 'dedent';
 
-// Get the base path from environment variable, default to empty string for local development
-const basePath = process.env.BASE_PATH || '';
-
 function resolveFileUrl({ fileName }) {
-  // Add the subdirectory prefix for GitHub Pages
-  const url = fileNameToURL(fileName);
-  if (url.startsWith('/') && basePath) {
-    return JSON.stringify(basePath + url);
-  }
-  return JSON.stringify(url);
-}
-
-// Add a new function to resolve AMD module IDs
-function resolveAMDModuleId(id) {
-  // If this is a service-worker import, resolve it to the correct path
-  if (id === 'service-worker:sw') {
-    const swPath = basePath ? basePath + '/static/sw.js' : '/static/sw.js';
-    return JSON.stringify(swPath);
-  }
-  // For other modules, return null to let the default resolver handle it
-  return null;
+  return JSON.stringify(fileNameToURL(fileName));
 }
 
 function resolveImportMetaUrlInStaticBuild(property, { moduleId }) {
@@ -140,6 +121,9 @@ export default async function ({ watch }) {
             { resolveFileUrl },
             OMT({ loader: await omtLoaderPromise }),
             importMetaAssets(),
+            serviceWorkerPlugin({
+              output: 'static/serviceworker.js',
+            }),
             ...commonPlugins(),
             commonjs(),
             resolve(),
@@ -160,43 +144,8 @@ export default async function ({ watch }) {
         },
         resolveFileUrl,
       ),
-      serviceWorkerPlugin({
-        output: 'static/sw.js',
-        basePath: basePath,
-      }),
       ...commonPlugins(),
-      emitFiles({
-        include: '**/*',
-        root: path.join(__dirname, 'src', 'copy'),
-        basePath: basePath,
-        // Add a processor for the sw-bridge file to fix the service worker path
-        processFile: (content, filePath) => {
-          if (filePath.endsWith('sw-bridge.894ac.js')) {
-            // Replace the hardcoded 'serviceworker.js' with the correct path
-            const swPath = basePath
-              ? basePath + '/static/sw.js'
-              : '/static/sw.js';
-            return content.replace(
-              /n\.p\s*\+\s*(['"])serviceworker\.js\1/g,
-              `n.p + $1${swPath}$1`,
-            );
-          }
-          // Also process AMD module files that might contain service-worker:sw references
-          if (filePath.includes('sw-bridge') && filePath.endsWith('.js')) {
-            const swPath = basePath
-              ? basePath + '/static/sw.js'
-              : '/static/sw.js';
-            // Replace AMD module definition pattern
-            content = content.replace(
-              /"service-worker:sw"/g,
-              JSON.stringify(swPath),
-            );
-            // Also replace any other instances
-            content = content.replace(/service-worker:sw/g, swPath);
-          }
-          return content;
-        },
-      }),
+      emitFiles({ include: '**/*', root: path.join(__dirname, 'src', 'copy') }),
       nodeExternalPlugin(),
       featurePlugin(),
       replace({ __PRERENDER__: true, __PRODUCTION__: isProduction }),

@@ -120,7 +120,7 @@ async function decodeImage(
   } catch (err) {
     if (err instanceof Error && err.name === 'AbortError') throw err;
     console.log(err);
-    throw Error('Unable to decode images');
+    throw Error('Unable to decode image');
   }
 }
 
@@ -431,12 +431,12 @@ export default class Compress extends Component<Props, State> {
       sides: cleanSet(this.state.sides, otherIndex, newSettings),
     });
 
-    const result = await this.props.showSnack('Copy settings to the other side', {
+    const result = await this.props.showSnack('Settings copied across', {
       timeout: 5000,
-      actions: ['Cancel', 'Ignore'],
+      actions: ['undo', 'dismiss'],
     });
 
-    if (result !== 'Cancel') return;
+    if (result !== 'undo') return;
 
     this.setState({
       sides: cleanSet(this.state.sides, otherIndex, oldSettings),
@@ -459,7 +459,7 @@ export default class Compress extends Component<Props, State> {
       window.dispatchEvent(new CustomEvent('leftSideSettings'));
       await this.props.showSnack('Left side settings saved', {
         timeout: 1500,
-        actions: ['Ignore'],
+        actions: ['dismiss'],
       });
       return;
     }
@@ -474,7 +474,7 @@ export default class Compress extends Component<Props, State> {
       window.dispatchEvent(new CustomEvent('rightSideSettings'));
       await this.props.showSnack('Right side settings saved', {
         timeout: 1500,
-        actions: ['Ignore'],
+        actions: ['dismiss'],
       });
       return;
     }
@@ -501,9 +501,9 @@ export default class Compress extends Component<Props, State> {
       });
       const result = await this.props.showSnack('Left side settings imported', {
         timeout: 3000,
-        actions: ['Cancel', 'Ignore'],
+        actions: ['undo', 'dismiss'],
       });
-      if (result === 'Cancel') {
+      if (result === 'undo') {
         this.setState({
           sides: cleanSet(this.state.sides, index, oldLeftSideSettings),
         });
@@ -520,11 +520,14 @@ export default class Compress extends Component<Props, State> {
       this.setState({
         sides: cleanSet(this.state.sides, index, newRightSideSettings),
       });
-      const result = await this.props.showSnack('Right side settings imported', {
-        timeout: 3000,
-        actions: ['Cancel', 'Ignore'],
-      });
-      if (result === 'Cancel') {
+      const result = await this.props.showSnack(
+        'Right side settings imported',
+        {
+          timeout: 3000,
+          actions: ['undo', 'dismiss'],
+        },
+      );
+      if (result === 'undo') {
         this.setState({
           sides: cleanSet(this.state.sides, index, oldRightSideSettings),
         });
@@ -721,7 +724,7 @@ export default class Compress extends Component<Props, State> {
         });
       } catch (err) {
         if (err instanceof Error && err.name === 'AbortError') return;
-        this.props.showSnack(`Decode error: ${err}`);
+        this.props.showSnack(`Source decoding error: ${err}`);
         throw err;
       }
     } else {
@@ -909,7 +912,7 @@ export default class Compress extends Component<Props, State> {
           });
           return { sides };
         });
-        this.props.showSnack(`Encoding error: ${err}`);
+        this.props.showSnack(`Processing error: ${err}`);
         throw err;
       }
     });

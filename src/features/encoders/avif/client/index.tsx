@@ -176,7 +176,7 @@ export class Options extends Component<Props, State> {
     return (
       <form class={style.optionsSection} onSubmit={preventDefault}>
         <label class={style.optionToggle}>
-          Lossless compression
+          Lossless
           <Checkbox
             checked={lossless}
             onChange={this._inputChange('lossless', 'boolean')}
@@ -210,7 +210,7 @@ export class Options extends Component<Props, State> {
                 {!lossless && (
                   <div>
                     <label class={style.optionTextFirst}>
-                      Chroma subsampling:
+                      Subsample chroma:
                       <Select
                         value={subsample}
                         onChange={this._inputChange('subsample', 'number')}
@@ -224,7 +224,7 @@ export class Options extends Component<Props, State> {
                     <Expander>
                       {subsample === 1 && (
                         <label class={style.optionToggle}>
-                          Sharp YUV downsampling
+                          Sharp YUV Downsampling
                           <Checkbox
                             checked={enableSharpYUV}
                             onChange={this._inputChange(
@@ -236,7 +236,7 @@ export class Options extends Component<Props, State> {
                       )}
                     </Expander>
                     <label class={style.optionToggle}>
-                      Independent Alpha channel quality
+                      Separate alpha quality
                       <Checkbox
                         checked={separateAlpha}
                         onChange={this._inputChange('separateAlpha', 'boolean')}
@@ -254,13 +254,13 @@ export class Options extends Component<Props, State> {
                               'number',
                             )}
                           >
-                            Alpha Quality:
+                            Alpha quality:
                           </Range>
                         </div>
                       )}
                     </Expander>
                     <label class={style.optionToggle}>
-                      Extra Chroma Compression
+                      Extra chroma compression
                       <Checkbox
                         checked={chromaDeltaQ}
                         onChange={this._inputChange('chromaDeltaQ', 'boolean')}
@@ -283,7 +283,7 @@ export class Options extends Component<Props, State> {
                         value={denoiseLevel}
                         onInput={this._inputChange('denoiseLevel', 'number')}
                       >
-                        Noise Reduction:
+                        Noise synthesis:
                       </Range>
                     </div>
                     <label class={style.optionTextFirst}>
@@ -307,7 +307,7 @@ export class Options extends Component<Props, State> {
                   value={tileRows}
                   onInput={this._inputChange('tileRows', 'number')}
                 >
-                  Tile Row Log2 Value:
+                  Log2 of tile rows:
                 </Range>
               </div>
               <div class={style.optionOneCell}>
@@ -317,7 +317,7 @@ export class Options extends Component<Props, State> {
                   value={tileCols}
                   onInput={this._inputChange('tileCols', 'number')}
                 >
-                  Tile Column Log2 Value:
+                  Log2 of tile cols:
                 </Range>
               </div>
             </div>
@@ -330,7 +330,7 @@ export class Options extends Component<Props, State> {
             value={effort}
             onInput={this._inputChange('effort', 'number')}
           >
-            Calculation Intensity:
+            Effort:
           </Range>
         </div>
       </form>

@@ -134,7 +134,7 @@ export class Options extends Component<Props, State> {
     return (
       <form class={style.optionsSection} onSubmit={preventDefault}>
         <label class={style.optionToggle}>
-          Lossless compression
+          Lossless
           <Checkbox
             name="lossless"
             checked={lossless}
@@ -176,7 +176,7 @@ export class Options extends Component<Props, State> {
                 />
               </label>
               <label class={style.optionToggle}>
-                Automatic edge preserving filter
+                Auto edge filter
                 <Checkbox
                   checked={autoEdgePreservingFilter}
                   onChange={this._inputChange(
@@ -197,7 +197,7 @@ export class Options extends Component<Props, State> {
                         'number',
                       )}
                     >
-                      Edge Preserving Filter:
+                      Edge preserving filter:
                     </Range>
                   </div>
                 )}
@@ -209,7 +209,7 @@ export class Options extends Component<Props, State> {
                   value={decodingSpeedTier}
                   onInput={this._inputChange('decodingSpeedTier', 'number')}
                 >
-                  Optimize Decoding Speed (Lower Compression Effect):
+                  Optimise for decoding speed (worse compression):
                 </Range>
               </div>
               <div class={style.optionOneCell}>
@@ -220,14 +220,14 @@ export class Options extends Component<Props, State> {
                   value={photonNoiseIso}
                   onInput={this._inputChange('photonNoiseIso', 'number')}
                 >
-                  Equivalent ISO Noise:
+                  Noise equivalent to ISO:
                 </Range>
               </div>
             </div>
           )}
         </Expander>
         <label class={style.optionToggle}>
-          Progressive Rendering
+          Progressive rendering
           <Checkbox
             name="progressive"
             checked={progressive}
@@ -241,7 +241,7 @@ export class Options extends Component<Props, State> {
             value={effort}
             onInput={this._inputChange('effort', 'number')}
           >
-            Calculation Intensity:
+            Effort:
           </Range>
         </div>
       </form>

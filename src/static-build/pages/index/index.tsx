@@ -27,7 +27,7 @@ interface Props {}
 const Index: FunctionalComponent<Props> = () => (
   <html lang="en">
     <head>
-      <title>Smaller</title>
+      <title>Codemo Image Optimize</title>
       <meta charSet="utf-8" />
       <meta
         name="description"
@@ -36,10 +36,10 @@ const Index: FunctionalComponent<Props> = () => (
       <meta name="twitter:card" content="summary" />
       <meta property="og:title" content="Codemo Image Optimize" />
       <meta property="og:type" content="website" />
-      <meta property="og:image" content={ogImage} />
+      <meta property="og:image" content={`${siteOrigin}${ogImage}`} />
       <meta
         property="og:image:secure_url"
-        content={ogImage}
+        content={`${siteOrigin}${ogImage}`}
       />
       <meta property="og:image:type" content="image/png" />
       <meta property="og:image:width" content="500" />
@@ -58,7 +58,7 @@ const Index: FunctionalComponent<Props> = () => (
       <link rel="shortcut icon" href={favicon} />
       <link rel="apple-touch-icon" href={ogImage} />
       <meta name="theme-color" content="#ff3385" />
-      <link rel="manifest" href="/codemo-image-optimize/manifest.json" />
+      <link rel="manifest" href="manifest.json" />
       <link rel="canonical" href={siteOrigin} />
       {/* AdSense script removed for privacy */}
       <style
@@ -87,7 +87,8 @@ const Index: FunctionalComponent<Props> = () => (
               aria-hidden="false"
             >
               <div class={snackbarStyle.text}>
-                Initialization error: This site requires JavaScript support, but your browser has it disabled.
+                Initialization error: This site requires JavaScript, which is
+                disabled in your browser.
               </div>
               <a class={snackbarStyle.button} href="/">
                 Reload
@@ -95,12 +96,12 @@ const Index: FunctionalComponent<Props> = () => (
             </div>
           </snack-bar>
         </noscript>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: escapeStyleScriptContent(allSrc),
-          }}
-        />
       </div>
+      <script
+        dangerouslySetInnerHTML={{
+          __html: escapeStyleScriptContent(allSrc),
+        }}
+      />
     </body>
   </html>
 );

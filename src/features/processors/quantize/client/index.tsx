@@ -75,7 +75,7 @@ export class Options extends Component<Props, State> {
                 value={options.maxNumColors}
                 onInput={this.onChange}
               >
-                Number of colors:
+                Colors:
               </Range>
             </div>
           )}

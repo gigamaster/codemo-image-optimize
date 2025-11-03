@@ -156,7 +156,7 @@ export class Options extends Component<Props, State> {
     return (
       <form class={style.optionsSection} onSubmit={preventDefault}>
         <label class={style.optionToggle}>
-          Lossless compression
+          Lossless
           <Checkbox
             checked={lossless}
             onChange={this._inputChange('lossless', 'boolean')}
@@ -172,7 +172,7 @@ export class Options extends Component<Props, State> {
                 value={slightLoss}
                 onInput={this._inputChange('slightLoss', 'number')}
               >
-                Mild loss:
+                Slight loss:
               </Range>
             </div>
           )}
@@ -192,7 +192,7 @@ export class Options extends Component<Props, State> {
                 </Range>
               </div>
               <label class={style.optionToggle}>
-                Independent Alpha Channel Quality
+                Separate alpha quality
                 <Checkbox
                   checked={separateAlpha}
                   onChange={this._inputChange('separateAlpha', 'boolean')}
@@ -208,7 +208,7 @@ export class Options extends Component<Props, State> {
                       value={alphaQuality}
                       onInput={this._inputChange('alphaQuality', 'number')}
                     >
-                      Alpha Channel Quality:
+                      Alpha Quality:
                     </Range>
                   </div>
                 )}
@@ -218,7 +218,7 @@ export class Options extends Component<Props, State> {
                   checked={showAdvanced}
                   onChange={linkState(this, 'showAdvanced')}
                 />
-                Advanced Settings
+                Advanced settings
               </label>
               <Expander>
                 {showAdvanced && (
@@ -231,7 +231,7 @@ export class Options extends Component<Props, State> {
                         value={passes}
                         onInput={this._inputChange('passes', 'number')}
                       >
-                        Processing iterations:
+                        Passes:
                       </Range>
                     </div>
                     <div class={style.optionOneCell}>
@@ -242,7 +242,7 @@ export class Options extends Component<Props, State> {
                         value={sns}
                         onInput={this._inputChange('sns', 'number')}
                       >
-                        Space noise shaping:
+                        Spatial noise shaping:
                       </Range>
                     </div>
                     <div class={style.optionOneCell}>
@@ -253,11 +253,11 @@ export class Options extends Component<Props, State> {
                         value={errorDiffusion}
                         onInput={this._inputChange('errorDiffusion', 'number')}
                       >
-                        Error diffusion​​:
+                        Error diffusion:
                       </Range>
                     </div>
                     <label class={style.optionTextFirst}>
-                      Chroma subsampling:
+                      Subsample chroma:
                       <Select
                         value={uvMode}
                         onInput={this._inputChange('uvMode', 'number')}
@@ -269,7 +269,7 @@ export class Options extends Component<Props, State> {
                       </Select>
                     </label>
                     <label class={style.optionTextFirst}>
-                      Color space​​:
+                      Color space:
                       <Select
                         value={colorSpace}
                         onInput={this._inputChange('colorSpace', 'number')}
@@ -280,7 +280,7 @@ export class Options extends Component<Props, State> {
                       </Select>
                     </label>
                     <label class={style.optionToggle}>
-                      Random matrix​​
+                      Random matrix
                       <Checkbox
                         checked={useRandomMatrix}
                         onChange={this._inputChange(
@@ -303,7 +303,7 @@ export class Options extends Component<Props, State> {
             value={effort}
             onInput={this._inputChange('effort', 'number')}
           >
-            Calculation intensity:
+            Effort:
           </Range>
         </div>
       </form>

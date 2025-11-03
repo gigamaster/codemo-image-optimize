@@ -171,14 +171,14 @@ export default class Options extends Component<Props, State> {
                   Edit
                   <button
                     class={style.copyOverButton}
-                    title="Copy settings to the other side"
+                    title="Copy settings to other side"
                     onClick={this.onCopyToOtherSideClick}
                   >
                     <SwapIcon />
                   </button>
                   <button
                     class={style.saveButton}
-                    title="Save settings"
+                    title="Save side settings"
                     onClick={this.onSaveSideSettingClick}
                   >
                     <SaveIcon />
@@ -195,7 +195,7 @@ export default class Options extends Component<Props, State> {
                         ? style.buttonOpacity
                         : '')
                     }
-                    title="Import saved settings"
+                    title="Import saved side settings"
                     onClick={this.onImportSideSettingsClick}
                     disabled={
                       // Disabled if this side's settings haven't been saved
@@ -229,7 +229,7 @@ export default class Options extends Component<Props, State> {
               </Expander>
 
               <label class={style.sectionEnabler}>
-                Color Palette
+                Reduce palette
                 <Toggle
                   name="quantize.enable"
                   checked={!!processorState.quantize.enabled}
@@ -248,7 +248,7 @@ export default class Options extends Component<Props, State> {
           )}
         </Expander>
 
-        <h3 class={style.optionsTitle}>Compression</h3>
+        <h3 class={style.optionsTitle}>Compress</h3>
 
         <section class={`${style.optionOneCell} ${style.optionsSection}`}>
           {supportedEncoderMap ? (
@@ -266,7 +266,7 @@ export default class Options extends Component<Props, State> {
             </Select>
           ) : (
             <Select large>
-              <option>Load…</option>
+              <option>Loading…</option>
             </Select>
           )}
         </section>

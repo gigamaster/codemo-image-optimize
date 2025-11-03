@@ -38,7 +38,7 @@ export class Options extends Component<Props, {}> {
     return (
       <form class={style.optionsSection} onSubmit={preventDefault}>
         <label class={style.optionToggle}>
-          Interlaced scanning
+          Interlace
           <Checkbox
             name="interlace"
             checked={options.interlace}
@@ -54,7 +54,7 @@ export class Options extends Component<Props, {}> {
             value={options.level}
             onInput={this.onChange}
           >
-            Calculation intensity:
+            Effort:
           </Range>
         </div>
       </form>
