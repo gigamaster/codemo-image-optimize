@@ -64,10 +64,10 @@ export const siteOrigin = (() => {
   if (process.env.DEV_PORT) return `http://localhost:${process.env.DEV_PORT}`;
   // https://docs.netlify.com/configure-builds/environment-variables/#build-metadata
   if (process.env.CONTEXT === 'production')
-    return 'https://gigamaster.github.io/codemo-image-optimize';
+    return 'https://gigamaster.github.io';
   if (process.env.DEPLOY_PRIME_URL) return process.env.DEPLOY_PRIME_URL;
   console.warn(
-    'Unable to determine site origin, defaulting to https://gigamaster.github.io/codemo-image-optimize',
+    'Unable to determine site origin, defaulting to https://gigamaster.github.io',
   );
-  return 'https://gigamaster.github.io/codemo-image-optimize';
+  return 'https://gigamaster.github.io';
 })();

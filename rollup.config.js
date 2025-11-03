@@ -36,7 +36,9 @@ import entryDataPlugin, { fileNameToURL } from './lib/entry-data-plugin';
 import dedent from 'dedent';
 
 function resolveFileUrl({ fileName }) {
-  return JSON.stringify(fileNameToURL(fileName));
+  const url = fileNameToURL(fileName);
+  // Prepend base path if it exists
+  return JSON.stringify(basePath + url);
 }
 
 function resolveImportMetaUrlInStaticBuild(property, { moduleId }) {
